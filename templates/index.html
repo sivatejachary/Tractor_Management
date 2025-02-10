@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tractor Data Entry</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Tractor Data Entry</h2>
+        <a href="/"><button>Home</button></a>
+        <form method="POST">
+            <label>Date:</label>
+            <input type="date" name="date" required value="{{ today }}">
+            <label>Vehicle Name:</label>
+            <input type="text" name="vehicle_name" required>
+            <label>Vehicle Number:</label>
+            <input type="text" name="vehicle_number" required>
+            <label>Showroom Cost:</label>
+            <input type="number" step="0.01" name="showroom_cost" required>
+            <button type="submit">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <script>alert("{{ messages[0][1] }}");</script>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

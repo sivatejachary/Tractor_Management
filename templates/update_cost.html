@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update Cost</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Update Cost</h2>
+        <a href="/"><button>Home</button></a>
+        <form method="POST">
+            <label>Vehicle Number:</label>
+            <input type="text" name="vehicle_number" required>
+            <label>Updated Cost:</label>
+            <input type="number" step="0.01" name="updated_cost" required>
+            <button type="submit">Update</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <script>alert("{{ messages[0][1] }}");</script>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

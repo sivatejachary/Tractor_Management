@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tractor Sales</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Tractor Sales Details</h2>
+        <a href="/"><button>Home</button></a>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Vehicle Name</th>
+                <th>Vehicle Number</th>
+                <th>Showroom Cost (₹)</th>
+                <th>Updated Cost (₹)</th>
+                <th>Total Cost (₹)</th>
+            </tr>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale[0] }}</td>
+                <td>{{ sale[1] }}</td>
+                <td>{{ sale[2] }}</td>
+                <td>₹{{ "%.2f"|format(sale[3]) }}</td>
+                <td>₹{{ "%.2f"|format(sale[4]) }}</td>
+                <td><b>₹{{ "%.2f"|format(sale[5]) }}</b></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
