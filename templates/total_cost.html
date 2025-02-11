@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Total Cost Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Total Cost Details</h2>
+
+        <!-- Home Button -->
+        <a href="/"><button class="home-btn">Home</button></a>
+
+        <!-- Table for displaying costs -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle Number</th>
+                        <th>Showroom Cost (₹)</th>
+                        <th>Updated Cost (₹)</th>
+                        <th>Total Cost (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in total_cost_data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>₹{{ "%.2f"|format(row[1]) }}</td>
+                        <td>₹{{ "%.2f"|format(row[2]) }}</td>
+                        <td><b>₹{{ "%.2f"|format(row[3]) }}</b></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Grand Total Display -->
+        <div class="grand-total">
+            <h3><b>Grand Total Cost: ₹{{ "%.2f"|format(total_cost) }}</b></h3>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tractor Data Entry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Tractor Data Entry</h2>
+
+        <!-- Home Button -->
+        <a href="/"><button class="home-btn">Home</button></a>
+
+        <!-- Entry Form -->
+        <form method="POST">
+            <label><b>Date:</b></label>
+            <input type="date" name="date" required value="{{ today }}">
+
+            <label><b>Vehicle Name:</b></label>
+            <input type="text" name="vehicle_name" placeholder="Enter Vehicle Name" required>
+
+            <label><b>Vehicle Number:</b></label>
+            <input type="text" name="vehicle_number" placeholder="Enter Vehicle Number" required>
+
+            <label><b>Showroom Cost:</b></label>
+            <input type="number" step="0.01" name="showroom_cost" placeholder="Enter Showroom Cost (₹)" required>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- Flash Message for Success -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <script>
+                alert("{{ messages[0][1] }}");
+            </script>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
