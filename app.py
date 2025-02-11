@@ -22,7 +22,7 @@ def static_files(filename):
 
 # Database Connection
 def get_db_connection():
-    conn = sqlite3.connect("tractor.db")
+    conn = sqlite3.connect("tractor.db", check_same_thread=False)  # Allow multi-threaded access
     conn.row_factory = sqlite3.Row  # Enables dictionary-like access to rows
     return conn
 
@@ -165,4 +165,4 @@ def delete_sale():
 
 if __name__ == "__main__":
     init_db()
-    app.run(host="0.0.0.0", port=7860, debug=True)
+    app.run(host="0.0.0.0", port=7860, debug=False)
